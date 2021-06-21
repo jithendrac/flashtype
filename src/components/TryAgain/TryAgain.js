@@ -1,7 +1,7 @@
 import React from "react"
 import "./TryAgain.css"
 
-const TryAgain= ({words, characters, wpm, startAgain}) => {
+const TryAgain= ({words, characters, wpm, accuracy, startAgain}) => {
     return (
         <div className="try-again-container">
             <h1>Test Results</h1>
@@ -14,6 +14,9 @@ const TryAgain= ({words, characters, wpm, startAgain}) => {
                 </p>
                 <p>
                     <b>Speed:</b>{wpm}
+                </p>
+                <p>
+                    <b>Accuracy:</b>{parseFloat(accuracy).toFixed(2)}%
                 </p>
             </div>
             <div>

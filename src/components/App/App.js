@@ -14,7 +14,8 @@ const defaultState={
   words:0,
   characters:0,
   wpm:0,
-  testInfo:[]
+  testInfo:[],
+  accuracy: 0
 }
 
 class App extends React.Component{
@@ -79,7 +80,10 @@ startAgain = () => {
         const isCorrect = inputValue[index] === testInfo[index].testLetter;
         //update status
         testInfo[index].status = isCorrect ? "correct" : "incorrect";
-        this.setState({ testInfo, words, characters})
+
+        const accuracy = ((testInfo.filter(letter => ( letter.status === "correct")).length) / characters)*100;
+
+        this.setState({ testInfo, words, characters, accuracy})
 
     }
 
@@ -111,6 +115,7 @@ startAgain = () => {
             timeRemaining={this.state.timeRemaining}
             timeStarted={this.state.timeStarted}
             testInfo={this.state.testInfo}
+            accuracy={this.state.accuracy}
             onInputChange={this.handleUserInput}
             startAgain={this.startAgain}
         />
